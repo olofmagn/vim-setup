@@ -1,0 +1,93 @@
+"Vundle configuration 
+set nocompatible
+filetype off
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+" Plugin 'L9'
+" Git plugin not hosted on GitHub
+"Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+"Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Install L9 and avoid a Naming conflict if you've already installed a
+" different version somewhere else.
+" Plugin 'ascenator/L9', {'name': 'newL9'}
+Plugin 'ycm-core/YouCompleteMe'
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+
+"Here the configuration starts"
+
+" Enable type file detection. Vim will be able to try to detect the type of file in use.
+filetype on
+
+" Enable plugins and load plugin for the detected file type.
+filetype plugin on
+
+" Load an indent file for the detected file type.
+filetype indent on
+
+" Turn syntax highlighting on.
+syntax on
+
+" Display statusline
+set laststatus=2
+
+" Map in order to run explictly from the terminal
+nnoremap <leader>r :!ruby %<CR>
+
+" Setting number automatically for each line"
+set number
+
+" Wrap text automatically for long strings
+set wrap
+
+" Show the current context vim is running on
+set showtabline=2
+
+" Make it easier to move and navigate through files
+set relativenumber
+
+"Setting tab logic for proper indentention"
+set expandtab
+set smarttab
+set shiftwidth=2
+set tabstop=2
+
+"Remove arrow keys"
+map <Down> <NOP>
+map <Up> <NOP>
+map <Left> <NOP>
+map <Right> <NOP>
+
+"binding esc" 
+inore jj <Esc>
+
+"Disable auto-commenting"
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
