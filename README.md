@@ -6,47 +6,77 @@ Welcome to my Vim configuration repository! 🎉
 - Code Completion: Seamless code completion with `YouCompleteMe`.
 - Themes: Pre-configured themes for an aesthetic coding environment.
 - Custom Keybindings: Simplified and efficient key mappings for better usability.
+- Three different installation approaches depending on your needs.
 
-## Installation
+## Installation (manual approach)
 1. Install Cmake, Vim and Python:
 ```
-sudo apt install build-essential cmake vim-nox python3-dev
+apt install build-essential cmake vim-nox python3-dev
 ```
-2. Install mono-complete, go, node, java and npm:
+2. Install mono-complete, go, node, java, npm and git:
 ```
-sudo apt install mono-complete golang nodejs openjdk-17-jdk openjdk-17-jre npm 
+apt install mono-complete golang nodejs openjdk-17-jdk openjdk-17-jre npm git
 ```
-3.  Setup Vundle:
+3.  Setup Vundle and other plugins:
 ```
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+mkdir -p ~/.vim/bundle
+cd ~/.vim/bundle
+git clone https://github.com/tpope/vim-fugitive.git
+git clone https://github.com/rstacruz/sparkup.git
+git clone https://github.com/ycm-core/YouCompleteMe.git
+git clone https://github.com/VundleVim/Vundle.vim.git 
 ```
 
 4. Clone the repository:
 ```
-git clone https://github.com/olofmagn/vim-config.git ~/Projects/
+mkdir ~/Projects (create a project folder in user home directory)
+git clone https://github.com/olofmagn/vim-setup.git ~/Projects/vim-setup
 ```
 
 5. Copy the vim-config:
 ```
-cp ~/Projects/vim-setup ~/.vim/vimrc
+mv ~/.vimrc backup-vimrc (avoid unintended overwrite)
+cp ~/Projects/vim-setup/vim-config ~/.vimrc
 ```
 
-6. Install YouCompleteMe utility:
+6. Install YouCompleteMe utility for code completion:
 ```
 cd ~/.vim/bundle/YouCompleteMe
 python3 install.py (--all can be used but probably not needed)
 ```
 
-7. Install plugins: Launch vim and issue: 
-`PluginInstall` or directly from commandline: `vim +PluginInstall +qall`
+7. To reload your current configuration: Launch vim and issue:
+```
+:source ~/.vimrc
+```
 
 8. Ready to vim!
 Launch `vim` and test different syntax in programming languages for autocompletion.
 
+## Installation via shellscript
 An alternative installation process is to install using the provided script for automating the above process:
 ```
-./install.sh (make sure you run this with administrator privilege)
+./install.sh 
 ```
+
+## Installation via plugins (prefer approach and if you do not have heavy network restrictions)
+Plugins can also be updated and installed directly via plugin manager `Vundle`:
+
+```
+apt install build-essential cmake vim-nox python3-dev git
+apt install mono-complete golang nodejs openjdk-17-jdk openjdk-17-jre npm
+
+mkdir -p ~/.vim/bundle
+cd ~/.vim/bundle
+
+git clone https://github.com/VundleVim/Vundle.vim.git
+git clone https://github.com/olofmagn/vim-setup.git ~/Projects/vim-setup
+mv ~/.vimrc backup-vimrc (avoid overwrite on current config)
+cp ~/Projects/vim-setup/vim-config ~/.vimrc
+vim +PluginInstall +qall
+```
+
+Launch `vim` and issue: `:source ~/.vimrc` for reloading.
 
 ## Requirements
 - Vim 8.0+.
